@@ -6,6 +6,8 @@ from boto.s3.key import Key
 
 TOKEN = os.environ['S3_SECRET']
 
+print(f'my token: {TOKEN}')
+
 bot = commands.Bot(command_prefix='!')
 
 # channel game-articles id is 729264852039630861
