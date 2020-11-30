@@ -5,20 +5,13 @@ TOKEN = os.environ['S3_SECRET']
 
 bot = commands.Bot(command_prefix='!')
 
-# channel game-articles id is 729264852039630861
-
-# for prod:
-# active_channel = sys.argsv[1]
-#for during dev:
-#regular discord
-#active_channel = 729264852039630861
-# channel_name = sys.argsv[2]
+#gfs playground
+#active_channel = 728440770952036423
 #channel_name = 'game-articles'
 
-active_channel = 728440770952036423
+#SDM info
+active_channel = 729264852039630861
 channel_name = 'gaming-articles'
-
-#BASE = "http://127.0.0.1:5000/"
 
 @bot.event
 async def on_ready():
