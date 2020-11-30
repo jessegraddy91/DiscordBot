@@ -1,12 +1,22 @@
 from discord.ext import commands
 import random, requests, json, os
+import boto
 from boto.s3.connection import S3Connection
+from boto.s3.key import Key
 
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+#s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
-print(s3)
+c = boto.connect_s3()
+bucket = conn.create_bucket('mybucket')
+b = c.get_bucket('mybucket') # substitute your bucket name here
+
+k = Key(b)
+k.key = os.environ['S3_KEY']
+print(k.get_contents_as_string())
+
+
+
 #print(s3['S3_SECRET'])
-TOKEN = '0'
 #TOKEN = s3['S3_SECRET']
 
 bot = commands.Bot(command_prefix='!')
