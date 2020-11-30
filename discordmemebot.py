@@ -57,12 +57,13 @@ async def randart(ctx):
         await bot.get_channel(active_channel).send('Random Recent Article from PCG: ' + random_article)
 """
 
+"""
 @bot.command(name='disc_meme_bot')
 async def disc_meme_bot(ctx):
     if ctx.channel.name == channel_name:
         await bot.get_channel(active_channel).send('Bye Bye!')
         await bot.close()
-
+"""
 
 @bot.event
 async def on_message(message):
