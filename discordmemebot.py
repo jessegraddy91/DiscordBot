@@ -5,8 +5,9 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
 TOKEN = os.environ['S3_SECRET']
+print(f"type of token: {type(TOKEN)}")
 
-print(f'my token: {TOKEN}')
+print(f'my token: {str(TOKEN)}')
 
 bot = commands.Bot(command_prefix='!')
 
