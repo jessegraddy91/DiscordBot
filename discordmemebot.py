@@ -17,7 +17,7 @@ channel_name = 'gaming-articles'
 async def on_ready():
     random.seed()
     print(f'{bot.user} has connected to Discord!')
-    await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
+    #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
 """
 @bot.command(name='article')
@@ -85,13 +85,14 @@ async def on_message(message):
         'everyone here likes memes'
     ]
 
-    if 'hey' in message.content and message.channel.id == active_channel:
+    if 'hey' in message.content:# and message.channel.id == active_channel:
         response = random.choice(question_resp)
-        await bot.get_channel(active_channel).send(response)
+        await bot.get_channel(message.channel.id).send(response)
 
-    if 'and now we know' in message.content and message.channel.id == active_channel:
+    if 'and now we know' in message.content:# and message.channel.id == active_channel:
         response = 'and knowing is half the battle'
-        await bot.get_channel(active_channel).send(response)    
+        #maybe .TextChannel instead of channel with .id
+        await bot.get_channel(message.channel.id).send(response)    
 
     await bot.process_commands(message)
 
