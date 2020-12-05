@@ -97,7 +97,7 @@ async def on_message(message):
     if message.author.id == 229840154397769728:
         #await bot.add_reaction(emoji="old_sam:783863390220320779")
         emoji = 'our_hero'
-        await message.add_reaction(message, emoji)
+        await bot.add_reaction(message, emoji)
         
 
     await bot.process_commands(message)
