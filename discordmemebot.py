@@ -86,7 +86,7 @@ async def on_message(message):
         'everyone here likes memes'
     ]
 
-    if 'hey' in message.content:# and message.channel.id == active_channel:
+    if 'hey' in message.content and message.channel.id == active_channel:
         response = random.choice(question_resp)
         await bot.get_channel(message.channel.id).send(response)
 
@@ -95,20 +95,18 @@ async def on_message(message):
         #maybe .TextChannel instead of channel with .id
         await bot.get_channel(message.channel.id).send(response)    
 
-    #if message.author.id == 229840154397769728:
-        #await bot.add_reaction(emoji="old_sam:783863390220320779")
-        #emoji = 'our_hero'
-        #await message.add_reaction(emoji)
-
-    # we do not want the bot to reply to itself
-    if message.author == bot.user:
-        return
-    if message.author.id == 229840154397769728:
-        print(f'author id: {message.author.id}')
-        print(f'message content: {message.content}')
-        
+    if message.author.id == 229840154397769728: #garf        
         await message.add_reaction('<:our_hero:433858373402755072>')
-        
+    if message.author.id == 241347961429164032: #old sam   
+        await message.add_reaction('<:old_sam:421865584003645451>')
+    if message.author.id == 319700740241227776: #craig
+        await message.add_reaction('<:craig:782520684185518092>')
+    if message.author.id == 145332658916950017: #phazon
+        await message.add_reaction('<:PepeMods:663971013192712202>')
+        await message.add_reaction('<:pepe_special:421872337990975488>')
+    if message.author.id == 333380600557862923: #rinyer
+        await message.add_reaction('<:Shibe_WG:539580961327808514>')
+
     await bot.process_commands(message)
 
 
