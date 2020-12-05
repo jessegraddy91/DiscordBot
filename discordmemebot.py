@@ -104,10 +104,8 @@ async def on_message(message):
     if message.author == bot.user:
         return
     if message.author.id == 229840154397769728:
-        emoji = get(bot.get_all_emojis(), name='our_hero')
-        await bot.add_reaction(message, emoji)
+        await bot.add_reaction(message, 'our_hero:784634962392907837')
         
-
     await bot.process_commands(message)
 
 
