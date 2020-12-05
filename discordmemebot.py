@@ -107,7 +107,7 @@ async def on_message(message):
         print(f'author id: {message.author.id}')
         print(f'message content: {message.content}')
         
-        await bot.add_reaction(message, '<:our_hero:433858373402755072>')
+        await message.add_reaction('<:our_hero:433858373402755072>')
         
     await bot.process_commands(message)
 
