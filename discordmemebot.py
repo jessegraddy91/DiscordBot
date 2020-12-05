@@ -1,4 +1,5 @@
 from discord.ext import commands
+from discord.utils import get
 import random, requests, json, os
 
 TOKEN = os.environ['S3_SECRET']
@@ -94,10 +95,17 @@ async def on_message(message):
         #maybe .TextChannel instead of channel with .id
         await bot.get_channel(message.channel.id).send(response)    
 
-    if message.author.id == 229840154397769728:
+    #if message.author.id == 229840154397769728:
         #await bot.add_reaction(emoji="old_sam:783863390220320779")
-        emoji = 'our_hero'
-        await message.add_reaction(emoji)
+        #emoji = 'our_hero'
+        #await message.add_reaction(emoji)
+
+    # we do not want the bot to reply to itself
+    if message.author == bot.user:
+        return
+    if message.author.id == 229840154397769728:
+        emoji = get(bot.get_all_emojis(), name='our_hero')
+        await bot.add_reaction(message, emoji)
         
 
     await bot.process_commands(message)
