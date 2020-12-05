@@ -94,6 +94,11 @@ async def on_message(message):
         #maybe .TextChannel instead of channel with .id
         await bot.get_channel(message.channel.id).send(response)    
 
+    if message.author == '229840154397769728':
+        #await bot.add_reaction(emoji="old_sam:783863390220320779")
+        await bot.add_reaction(emoji="our_hero:783954443091312670")
+        
+
     await bot.process_commands(message)
 
 
