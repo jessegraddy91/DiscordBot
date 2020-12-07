@@ -1,5 +1,5 @@
 from discord.ext import commands
-import random, requests, json, os
+import discord, random, requests, json, os
 
 TOKEN = os.environ['S3_SECRET']
 
@@ -131,7 +131,10 @@ async def on_message(message):
 
     #785313284664066059 sponge_mock
     if message.content.startswith('!sponge ') and message.channel.id == 728412068880973875:
-        await bot.get_channel(728412068880973875).send(sponge_it(message.content)).add_reaction('<:sponge_mock:785313284664066059>')
+        await bot.get_channel(728412068880973875).send(sponge_it(message.content))
+        #.add_reaction('<:sponge_mock:785313284664066059>')
+        bot_msg = discord.utils.get(await channel.history(limit=1).flatten(), author=728172902394101770)
+        print(bot_msg)
         await message.delete()
 
     await bot.process_commands(message)
