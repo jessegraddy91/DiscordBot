@@ -111,7 +111,7 @@ async def on_message(message):
 
 
     if message.content.startswith('!thing ') and message.channel.id == 728412068880973875:
-        await client.get_channel(728412068880973875).send(sponge_it(message.content))
+        await bot.get_channel(728412068880973875).send(sponge_it(message.content))
 
         await message.delete(message)
 
