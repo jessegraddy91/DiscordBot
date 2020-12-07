@@ -129,10 +129,9 @@ async def on_message(message):
         #await message.add_reaction('<:Shibe_WG:539580961327808514>')
 
 
-
+    #785313284664066059 sponge_mock
     if message.content.startswith('!sponge ') and message.channel.id == 728412068880973875:
-        await bot.get_channel(728412068880973875).send(sponge_it(message.content))
-
+        await bot.get_channel(728412068880973875).send(sponge_it(message.content)).add_reaction('<:sponge_mock:785313284664066059>')
         await message.delete()
 
     await bot.process_commands(message)
