@@ -22,8 +22,8 @@ async def on_ready():
     #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
 def sponge_it(msg_text):
-    sponged = msg_text.replace('?sponge', '')
-    sponged.lower()
+    sponged = msg_text.replace('?sponge ', '')
+    sponged = sponged.lower()
     
     final_sponge = ''
     
