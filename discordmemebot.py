@@ -21,6 +21,25 @@ async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
+def sponge_it(msg_text):
+    sponged = msg_text.lower()
+    
+    final_sponge = ''
+    
+    rando_num = random.randint(0,1)
+
+    i = 0
+    for char in sponged:
+        if i % 2 == 0 and rando_num == 0:
+            final_sponge += char.upper()
+        elif i % 2 != 0 and rando_num == 1:
+            final_sponge += char.upper()
+        else:
+            final_sponge += char
+            
+        i += 1    
+		
+    return final_sponge
 """
 @bot.command(name='article')
 async def search_article(ctx, search_qry):
@@ -122,22 +141,4 @@ async def on_message(message):
 bot.run(TOKEN)
 
 
-def sponge_it(msg_text):
-    sponged = msg_text.lower()
-    
-    final_sponge = ''
-    
-    rando_num = random.randint(0,1)
 
-    i = 0
-    for char in sponged:
-        if i % 2 == 0 and rando_num == 0:
-            final_sponge += char.upper()
-        elif i % 2 != 0 and rando_num == 1:
-            final_sponge += char.upper()
-        else:
-            final_sponge += char
-            
-        i += 1    
-		
-    return final_sponge
