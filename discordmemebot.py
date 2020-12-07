@@ -130,11 +130,10 @@ async def on_message(message):
 
 
     #785313284664066059 sponge_mock
+    #.add_reaction('<:sponge_mock:785313284664066059>')
     if message.content.startswith('?sponge ') and message.channel.id == 728412068880973875:
-        await bot.get_channel(728412068880973875).send(sponge_it(message.content))
-        #.add_reaction('<:sponge_mock:785313284664066059>')
-        bot_msg = discord.utils.get(await message.channel.history(limit=10).flatten(), author=728172902394101770)
-        print(f'bot msg: {bot_msg}')
+        bot_msg = await bot.get_channel(728412068880973875).send(sponge_it(message.content))
+        print(f'bot msg: {bot_msg.content}')
         await message.delete()
 
     await bot.process_commands(message)
