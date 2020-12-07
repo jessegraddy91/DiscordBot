@@ -1,5 +1,4 @@
 from discord.ext import commands
-from discord.utils import get
 import random, requests, json, os
 
 TOKEN = os.environ['S3_SECRET']
@@ -13,6 +12,8 @@ bot = commands.Bot(command_prefix='!')
 #SDM info
 active_channel = 729264852039630861
 channel_name = 'gaming-articles'
+
+
 
 @bot.event
 async def on_ready():
@@ -109,11 +110,34 @@ async def on_message(message):
 
 
 
-    if message.content.startswith('!thing') and message.channel.id == 728412068880973875:
-        await message.edit(content="newcontent")
+    if message.content.startswith('!thing ') and message.channel.id == 728412068880973875:
+        await client.get_channel(728412068880973875).send(sponge_it(message.content))
+
+        await message.delete(message)
 
     await bot.process_commands(message)
 
 
 
 bot.run(TOKEN)
+
+
+def sponge_it(msg_text):
+    sponged = msg_text.lower()
+    
+    final_sponge = ''
+    
+    rando_num = random.randint(0,1)
+
+    i = 0
+    for char in sponged:
+        if i % 2 == 0 and rando_num == 0:
+            final_sponge += char.upper()
+        elif i % 2 != 0 and rando_num == 1:
+            final_sponge += char.upper()
+        else:
+            final_sponge += char
+            
+        i += 1    
+		
+    return final_sponge
