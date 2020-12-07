@@ -22,7 +22,7 @@ async def on_ready():
     #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
 def sponge_it(msg_text):
-    sponged = msg_text.replace('!sponge', '')
+    sponged = msg_text.replace('?sponge', '')
     sponged.lower()
     
     final_sponge = ''
@@ -130,11 +130,11 @@ async def on_message(message):
 
 
     #785313284664066059 sponge_mock
-    if message.content.startswith('!sponge ') and message.channel.id == 728412068880973875:
+    if message.content.startswith('?sponge ') and message.channel.id == 728412068880973875:
         await bot.get_channel(728412068880973875).send(sponge_it(message.content))
         #.add_reaction('<:sponge_mock:785313284664066059>')
-        bot_msg = discord.utils.get(await message.channel.history(limit=1).flatten(), author=728172902394101770)
-        print(bot_msg)
+        bot_msg = discord.utils.get(await message.channel.history(limit=10).flatten(), author=728172902394101770)
+        print(f'bot msg: {bot_msg}')
         await message.delete()
 
     await bot.process_commands(message)
