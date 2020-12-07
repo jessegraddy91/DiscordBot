@@ -22,7 +22,8 @@ async def on_ready():
     #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
 def sponge_it(msg_text):
-    sponged = msg_text.lower()
+    sponged = msg_text.replace('!sponge', '')
+    sponged.lower()
     
     final_sponge = ''
     
@@ -129,10 +130,10 @@ async def on_message(message):
 
 
 
-    if message.content.startswith('!thing ') and message.channel.id == 728412068880973875:
+    if message.content.startswith('!sponge ') and message.channel.id == 728412068880973875:
         await bot.get_channel(728412068880973875).send(sponge_it(message.content))
 
-        await message.delete(message)
+        await message.delete()
 
     await bot.process_commands(message)
 
