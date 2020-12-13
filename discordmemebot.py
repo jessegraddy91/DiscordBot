@@ -6,12 +6,13 @@ TOKEN = os.environ['S3_SECRET']
 bot = commands.Bot(command_prefix='!')
 
 #gfs playground
-gfs_pg_channel = 728440770952036423
-#channel_name = 'game-articles'
+#gfs_pg_channel = 728440770952036423
+#channel_name = 'gaming-articles'
 
 #SDM info
 active_channel = 729264852039630861
-channel_name = 'gaming-articles'
+channel_name = 'game-articles'
+
 
 #BASE = 'localhost:5000'
 article_base = 'https://discord-meme-bot-api.herokuapp.com/api/article'
