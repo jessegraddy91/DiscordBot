@@ -6,20 +6,22 @@ TOKEN = os.environ['S3_SECRET']
 bot = commands.Bot(command_prefix='!')
 
 #gfs playground
-#active_channel = 728440770952036423
+gfs_pg_channel = 728440770952036423
 #channel_name = 'game-articles'
 
 #SDM info
 active_channel = 729264852039630861
 channel_name = 'gaming-articles'
 
+BASE = 'localhost:5000'
+article_base = 'localhost:5000/api/article/'
 
 
 @bot.event
 async def on_ready():
     random.seed()
     print(f'{bot.user} has connected to Discord!')
-    #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
+    await bot.get_channel(gfs_pg_channel).send('DankMemeBot ready for Memes')
 
 def sponge_it(msg_text):
     sponged = msg_text.replace('?sponge ', '')
@@ -41,28 +43,28 @@ def sponge_it(msg_text):
         i += 1    
 		
     return final_sponge
-"""
+
 @bot.command(name='article')
 async def search_article(ctx, search_qry):
     if ctx.channel.name == channel_name:
-        await bot.get_channel(active_channel).send('Query Results from PCG: ' + search_result)
-"""
+        r = requests.get(article_base + str(search_qry))      
+        await bot.get_channel(gfs_pg_channel).send('Query Results from PCG: ' + r.text)
+
 """
 @bot.command(name='bigarticle')
 async def main_article(ctx):
     if ctx.channel.name == channel_name:
-        pass
-        await bot.get_channel(active_channel).send('Main Article from PCG: ' + response)
-"""
-"""
+        await bot.get_channel(gfs_pg_channel).send('Main Article from PCG: ' + response)
+
+
 @bot.command(name='mostrecentart')
 async def recentestart(ctx):
     if ctx.channel.name == channel_name:
         r = requests.get(BASE + '/latest-article')
         print(r.text)
         r_json = json.loads(r.text)
-        await bot.get_channel(active_channel).send('id: ' + str(r_json['id']) + ', link: ' + r_json['link'])
-        # await bot.get_channel(active_channel).send('Most Recent Article from PCG: ' + response)
+        await bot.get_channel(gfs_pg_channel).send('id: ' + str(r_json['id']) + ', link: ' + r_json['link'])
+        # await bot.get_channel(gfs_pg_channel).send('Most Recent Article from PCG: ' + response)
 
 
 @bot.command(name='randart')
@@ -76,10 +78,10 @@ async def randart(ctx):
 
         random_article = rand_dict['link']
 
-        await bot.get_channel(active_channel).send('Random Recent Article from PCG: ' + random_article)
-"""
+        await bot.get_channel(gfs_pg_channel).send('Random Recent Article from PCG: ' + random_article)
 
-"""
+
+
 @bot.command(name='disc_meme_bot')
 async def disc_meme_bot(ctx):
     if ctx.channel.name == channel_name:
