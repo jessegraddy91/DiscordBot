@@ -47,7 +47,7 @@ def sponge_it(msg_text):
 @bot.command(name='article')
 async def search_article(ctx, search_qry):
     if ctx.channel.name == channel_name:
-        r = requests.get(article_base + str(search_qry))      
+        r = requests.get(f"{article_base}/{search_qry}")      
         await bot.get_channel(gfs_pg_channel).send('Query Results from PCG: ' + r.text)
         
 @bot.command(name='article-all')
