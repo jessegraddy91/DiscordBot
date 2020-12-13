@@ -14,7 +14,7 @@ active_channel = 729264852039630861
 channel_name = 'gaming-articles'
 
 BASE = 'localhost:5000'
-article_base = 'localhost:5000/api/article/'
+article_base = 'http://fa23d5a736df.ngrok.io/api/article/'
 
 
 @bot.event
