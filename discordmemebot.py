@@ -5,24 +5,19 @@ TOKEN = os.environ['S3_SECRET']
 
 bot = commands.Bot(command_prefix='!')
 
-#gfs playground
-#gfs_pg_channel = 728440770952036423
-#channel_name = 'gaming-articles'
-
 #SDM info
-active_channel = 729264852039630861
-channel_name = 'game-articles'
+active_channel = os.environ['active_channel']
+channel_name = os.environ['channel_name']
 
-
-#BASE = 'localhost:5000'
-article_base = 'https://discord-meme-bot-api.herokuapp.com/api/article'
+#BASE
+article_base = os.environ['article_base']
 
 
 @bot.event
 async def on_ready():
     random.seed()
     print(f'{bot.user} has connected to Discord!')
-    await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
+    #await bot.get_channel(active_channel).send('DankMemeBot ready for Memes')
 
 def sponge_it(msg_text):
     sponged = msg_text.replace('?sponge ', '')
@@ -125,16 +120,16 @@ async def on_message(message):
         #maybe .TextChannel instead of channel with .id
         await bot.get_channel(message.channel.id).send(response)    
 
-    #if message.author.id == 229840154397769728: #garf        
+    #if message.author.id == 229840154397769728: #me        
         #await message.add_reaction('<:our_hero:433858373402755072>')
-    if message.author.id == 241347961429164032: #old sam   
+    if message.author.id == 241347961429164032: #os   
         await message.add_reaction('<:old_sam:421865584003645451>')
-    #if message.author.id == 319700740241227776: #craig
+    #if message.author.id == 319700740241227776: #cr
         #await message.add_reaction('<:craig:782520684185518092>')
-    #if message.author.id == 145332658916950017: #phazon
+    #if message.author.id == 145332658916950017: #ph
         #await message.add_reaction('<:PepeMods:663971013192712202>')
         #await message.add_reaction('<:pepe_special:421872337990975488>')
-    #if message.author.id == 333380600557862923: #rinyer
+    #if message.author.id == 333380600557862923: #ri
         #await message.add_reaction('<:Shibe_WG:539580961327808514>')
 
 
