@@ -13,8 +13,8 @@ gfs_pg_channel = 728440770952036423
 active_channel = 729264852039630861
 channel_name = 'gaming-articles'
 
-BASE = 'localhost:5000'
-article_base = 'http://fa23d5a736df.ngrok.io/api/article/'
+#BASE = 'localhost:5000'
+article_base = 'https://discord-meme-bot-api.herokuapp.com/api/article'
 
 
 @bot.event
@@ -48,6 +48,12 @@ def sponge_it(msg_text):
 async def search_article(ctx, search_qry):
     if ctx.channel.name == channel_name:
         r = requests.get(article_base + str(search_qry))      
+        await bot.get_channel(gfs_pg_channel).send('Query Results from PCG: ' + r.text)
+        
+@bot.command(name='article-all')
+async def get_article_all(ctx):
+    if ctx.channel.name == channel_name:
+        r = requests.get(f"{article_base}/all")      
         await bot.get_channel(gfs_pg_channel).send('Query Results from PCG: ' + r.text)
 
 """
