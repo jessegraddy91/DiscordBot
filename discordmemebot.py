@@ -5,7 +5,7 @@ import discord, random, requests, json, os
 TOKEN = os.environ['S3_SECRET']
 
 #SDM info
-active_channel = os.environ['active_channel']
+active_channel = int(os.environ['active_channel'])
 try:
     print(f"active_channel type: {type(active_channel)}")
     print(f"active_channel: {active_channel}")
