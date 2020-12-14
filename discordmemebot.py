@@ -6,27 +6,12 @@ TOKEN = os.environ['S3_SECRET']
 
 #SDM info
 active_channel = int(os.environ['active_channel'])
-try:
-    print(f"active_channel type: {type(active_channel)}")
-    print(f"active_channel: {active_channel}")
-except:
-    print(f"oopsy active_channel")
     
 #SDM channel
 channel_name = os.environ['channel_name']
-try:
-    print(f"channel_name type: {type(channel_name)}")
-    print(f"channel_name: {channel_name}")
-except:
-    print(f"oopsy channel name")
 
 #BASE
 article_base = os.environ['article_base']
-try:
-    print(f"article base type: {type(article_base)}")
-    print(f"article base: {article_base}")
-except:
-    print(f"oopsy article_base")
 
 bot = commands.Bot(command_prefix='!')
 
