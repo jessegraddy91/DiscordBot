@@ -1,17 +1,34 @@
 from discord.ext import commands
 import discord, random, requests, json, os
 
+#scrod token
 TOKEN = os.environ['S3_SECRET']
-
-bot = commands.Bot(command_prefix='!')
 
 #SDM info
 active_channel = os.environ['active_channel']
+try:
+    print(f"active_channel type: {type(active_channel)}")
+    print(f"active_channel: {active_channel}")
+except:
+    print(f"oopsy active_channel")
+    
+#SDM channel
 channel_name = os.environ['channel_name']
+try:
+    print(f"channel_name type: {type(channel_name)}")
+    print(f"channel_name: {channel_name}")
+except:
+    print(f"oopsy channel name")
 
 #BASE
 article_base = os.environ['article_base']
+try:
+    print(f"article base type: {type(article_base)}")
+    print(f"article base: {article_base}")
+except:
+    print(f"oopsy article_base")
 
+bot = commands.Bot(command_prefix='!')
 
 @bot.event
 async def on_ready():
@@ -44,7 +61,7 @@ def sponge_it(msg_text):
 async def search_article(ctx, search_qry):
     if ctx.channel.name == channel_name:
         r = requests.get(f"{article_base}/{search_qry}")      
-        await bot.get_channel(active_channel).send('Query Results from PCG: ' + r.text)
+        await bot.get_channel(active_channel).send(f'Query Results from PCG: {r.text}')
         
 @bot.command(name='article-all')
 async def get_article_all(ctx):
@@ -52,44 +69,7 @@ async def get_article_all(ctx):
         r = requests.get(f"{article_base}/all")      
         await bot.get_channel(active_channel).send('Query Results from PCG: ' + r.text)
 
-"""
-@bot.command(name='bigarticle')
-async def main_article(ctx):
-    if ctx.channel.name == channel_name:
-        await bot.get_channel(active_channel).send('Main Article from PCG: ' + response)
 
-
-@bot.command(name='mostrecentart')
-async def recentestart(ctx):
-    if ctx.channel.name == channel_name:
-        r = requests.get(BASE + '/latest-article')
-        print(r.text)
-        r_json = json.loads(r.text)
-        await bot.get_channel(active_channel).send('id: ' + str(r_json['id']) + ', link: ' + r_json['link'])
-        # await bot.get_channel(active_channel).send('Most Recent Article from PCG: ' + response)
-
-
-@bot.command(name='randart')
-async def randart(ctx):
-    if ctx.channel.name == channel_name:
-        r = requests.get(BASE + '/latest-article')
-        pos_dict = json.loads(r.text)
-
-        r2 = requests.get(BASE + f"/article/{random.randint(0,pos_dict['id'])}")
-        rand_dict = json.loads(r2.text)
-
-        random_article = rand_dict['link']
-
-        await bot.get_channel(active_channel).send('Random Recent Article from PCG: ' + random_article)
-
-
-
-@bot.command(name='disc_meme_bot')
-async def disc_meme_bot(ctx):
-    if ctx.channel.name == channel_name:
-        await bot.get_channel(active_channel).send('Bye Bye!')
-        await bot.close()
-"""
 
 @bot.event
 async def on_message(message):
