@@ -13,6 +13,7 @@ channel_name = os.environ['channel_name']
 #BASE
 article_base = os.environ['article_base']
 
+#Bot command prefix
 bot = commands.Bot(command_prefix='!')
 
 @bot.event
@@ -42,6 +43,7 @@ def sponge_it(msg_text):
 		
     return final_sponge
 
+"""
 @bot.command(name='article')
 async def search_article(ctx, search_qry):
     if ctx.channel.name == channel_name:
@@ -52,10 +54,10 @@ async def search_article(ctx, search_qry):
 async def get_article_all(ctx):
     if ctx.channel.name == channel_name:
         r = requests.get(f"{article_base}/all")      
-        await bot.get_channel(active_channel).send('Query Results from PCG: ' + r.text)
+        await bot.get_channel(active_channel).send(f'Query-All Results from PCG: {r.text}')
+"""
 
-
-
+#on message events
 @bot.event
 async def on_message(message):
     question_resp = [
